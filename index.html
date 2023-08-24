@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/home_page.css">
+    <script src="javascript/api.js"></script>
     <title>Weather</title>
 </head>
 <body>
     <div class="home-page">
         <h1>Weather</h1>
-        <div class="input-box">
+        <form class="input-box" id="input-box">
             <input type="text" id="weather_location" placeholder="Enter a City Name">
-        </div>    
+            <button type="submit">Submit</button>
+          </form>
     </div>
-
+    <div id="data-container">
+        <!-- Data will be displayed here -->
+    </div>
 </body>
 </html>
