@@ -1,62 +1,44 @@
-// const fs = require('fs');
-// const anotherModule = require('./anotherModule');
+const apiKey = ""
 
-// const filePath = '../api_key.txt';
-// var apiKey ;
-
-// fs.readFile(filePath, 'utf8', (err, data) => {
-//   if (err) {
-//     console.error('Error reading the file:', err);
-//     return;
-//   }
-
-//   apiKey = anotherModule.processData(data);
-// });
-// console.log(apiKey)
-
-// Make the API call using fetch
-// fetch(apiUrl)
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error(`Network response was not ok: ${response.status}`);
-//     }
-//     return response.json();
-//   })
-//   .then(data => {
-//     // Process the weather data
-//     console.log(data);
-//   })
-//   .catch(error => {
-//     console.error('Error fetching weather data:', error);
-//   });
+// Ensure all the page contents are loaded
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("input-box").addEventListener('submit', function (e) {
     e.preventDefault();
   
     const userInput = document.getElementById("weather_location").value;
-  
-    makeApiCall(userInput);
+    
+    if(userInput === null) {
+      alert("Error: A valid city name must be entered.");
+    }
+    else {
+      makeApiCall(userInput);
+    }
   })
   
   function makeApiCall(userInput) {
+    // The free api only allows forecasting up to 3 days so only use that api url
     const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${userInput}&days=3&aqi=yes&alerts=no`;
   
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        // Get the data-container element
-        const dataContainer = document.getElementById('data-container');
-  
-        // Create HTML elements to display the data
-        const dataDisplay = document.createElement('div');
-        dataDisplay.textContent = `API Data: ${data.someProperty}`;
-  
-        // Append the data display element to the container
-        dataContainer.appendChild(dataDisplay);
         console.log(data)
+        createCurrentForecastHtml(data.location, data.current)
+        createThreeDayForecaseHtml(data.location, data.forecast)
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
 });
+
+function createCurrentForecastHtml(location, currentForecast) {
+  console.log("Location: " + location);
+  console.log("Forecast: " + currentForecast)
+  document.getElementById("home-page").innerHTML = "<h1>" + location.name + location.region + location.country + "</h1>"
+}
+
+function createThreeDayForecaseHtml(location, projectedForecast) {
+  console.log("Location: " + location.country);
+  console.log("Projected Forecast: " + projectedForecast.forecastday[0].day.maxtemp_c)
+}
