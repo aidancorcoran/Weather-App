@@ -33,9 +33,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function createCurrentForecastHtml(location, currentForecast) {
-  console.log("Location: " + location);
-  console.log("Forecast: " + currentForecast)
-  document.getElementById("home-page").innerHTML = "<h1>" + location.name + location.region + location.country + "</h1>"
+  // Location variables parsing from the api request
+  var country = location.country;
+  var city = location.name;
+  var date_time = location.localtime;
+
+  // Weather data variables for the weather today
+  var conditions = currentForecast.condition.text;
+  var weather_icon = currentForecast.condition.icon
+  var temp_c = currentForecast.temp_c;
+  var feelsliketemp_c = currentForecast.feelslike_c;
+  var humidity = currentForecast.humidity;
+  var wind_speed = currentForecast.wind_kph
+  var uv_index = currentForecast.uv;
+
+  // Create html elements for the current forecast
+  var location_html = "<h3>"+city+", "+country+"</h3>";
+  var time_icon_html = "<h4>"+date_time+"</h4>";
+  var icon_html = "<img src=https:"+weather_icon+">";
+
+  var weather_info = "<p>"+conditions+"<br>Temperature (°C): <b>"+temp_c+"</b><br>Humidity (%): <b>"+humidity+"</b><br>Feels like (°C): <b>"+feelsliketemp_c+"</b><br>Wind speed (km/h): <b>"+wind_speed+"</b><br>UV: <b>"+uv_index+"</b></p>";
+  document.getElementById("current-forecast").innerHTML = location_html + time_icon_html + icon_html + weather_info;
+  document.getElementById("current-forecast").classList.remove("hidden");
 }
 
 function createThreeDayForecaseHtml(location, projectedForecast) {
