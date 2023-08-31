@@ -1,4 +1,4 @@
-const apiKey = "0951d42498cd487f8d9190030230808";
+const apiKey = process.env.API_KEY;
 
 // Ensure all the page contents are loaded
 document.addEventListener('DOMContentLoaded', function() {
