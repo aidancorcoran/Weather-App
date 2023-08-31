@@ -58,6 +58,15 @@ function createCurrentForecastHtml(location, currentForecast) {
 }
 
 function createThreeDayForecaseHtml(location, projectedForecast) {
-  console.log("Location: " + location.country);
-  console.log("Projected Forecast: " + projectedForecast.forecastday[0].day.maxtemp_c)
+  document.getElementById("three-day-forecast").innerHTML = createForcastElementString(projectedForecast.forecastday[0]);
+}
+
+function createForcastElementString(forecast) {
+  var conditions = forecast.day.condition.text;
+  var weather_icon = forecast.day.condition.icon;
+  var temp_c = forecast.day.avgtemp_c;
+
+  var icon_html = "<img src=https:"+weather_icon+">";
+  var weather_info = "<p>"+conditions+"<br>Temperature (°C): <b>"+temp_c+"</b></p>";
+  return icon_html + weather_info
 }
