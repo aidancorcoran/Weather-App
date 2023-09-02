@@ -110,3 +110,52 @@ button[type="submit"]:focus {
     color: #444;
     margin-top: 5px;
 }
+
+/* Style the 3 day forecast div */
+#three-day-forecast {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    width: fit-content;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Style the h3 element for location */
+#three-day-forecast h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+/* Style the h4 element for date and time */
+#three-day-forecast h4 {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #777;
+}
+
+/* Style the image */
+#three-day-forecast img {
+    margin: 5px 0 0;
+    max-width: 64px;
+    height: auto;
+}
+
+/* Style the paragraph with weather information */
+#three-day-forecast p {
+    font-size: 16px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #444;
+    margin-top: 5px;
+}
+
+#single-forecast {
+    display: inline-block;
+    margin-right: 20px;
+}

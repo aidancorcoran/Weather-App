@@ -58,7 +58,8 @@ function createCurrentForecastHtml(location, currentForecast) {
 }
 
 function createThreeDayForecaseHtml(location, projectedForecast) {
-  document.getElementById("three-day-forecast").innerHTML = createForcastElementString(projectedForecast.forecastday[0]);
+  document.getElementById("three-day-forecast").innerHTML = createForcastElementString(projectedForecast.forecastday[0]) + createForcastElementString(projectedForecast.forecastday[1]) + createForcastElementString(projectedForecast.forecastday[2]);
+  document.getElementById("three-day-forecast").classList.remove("hidden");
 }
 
 function createForcastElementString(forecast) {
@@ -68,5 +69,5 @@ function createForcastElementString(forecast) {
 
   var icon_html = "<img src=https:"+weather_icon+">";
   var weather_info = "<p>"+conditions+"<br>Temperature (°C): <b>"+temp_c+"</b></p>";
-  return icon_html + weather_info
+  return "<div id='single_forecast'>"+icon_html + weather_info+"</div>"
 }
