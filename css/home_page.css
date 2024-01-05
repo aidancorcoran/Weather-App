@@ -67,6 +67,12 @@ button[type="submit"]:focus {
     display: none;
 }
 
+.current-forecast-wrapper h2{
+    transform: translate(44.5%, 5px);
+    font-size: 30px;
+}
+
+
 /* Style the container div */
 #current-forecast {
     background-color: #f5f5f5;
@@ -77,7 +83,7 @@ button[type="submit"]:focus {
     margin: 20px;
     width: fit-content;
     position: absolute;
-    top: 45%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -121,10 +127,16 @@ button[type="submit"]:focus {
     margin: 20px;
     width: fit-content;
     position: absolute;
-    top: 80%;
+    top: 76%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+}
+
+#three-day-forecast h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
 }
 
 /* Style the h3 element for location */

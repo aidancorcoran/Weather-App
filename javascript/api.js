@@ -55,21 +55,21 @@ function createCurrentForecastHtml(location, currentForecast) {
   var weather_info = "<p>"+conditions+"<br>Temperature (°C): <b>"+temp_c+"</b><br>Humidity (%): <b>"+humidity+"</b><br>Feels like (°C): <b>"+feelsliketemp_c+"</b><br>Wind speed (km/h): <b>"+wind_speed+"</b><br>UV: <b>"+uv_index+"</b></p>";
   document.getElementById("current-forecast").innerHTML = location_html + time_icon_html + icon_html + weather_info;
   document.getElementById("current-forecast").classList.remove("hidden");
-  document.getElementById("current-header").classList.remove("hidden");
 }
 
 function createThreeDayForecaseHtml(location, projectedForecast) {
   document.getElementById("three-day-forecast").innerHTML = createForcastElementString(projectedForecast.forecastday[0]) + createForcastElementString(projectedForecast.forecastday[1]) + createForcastElementString(projectedForecast.forecastday[2]);
   document.getElementById("three-day-forecast").classList.remove("hidden");
-  document.getElementById("forecast-header").classList.remove("hidden");
 }
 
 function createForcastElementString(forecast) {
   var conditions = forecast.day.condition.text;
   var weather_icon = forecast.day.condition.icon;
   var temp_c = forecast.day.avgtemp_c;
+  var date = forecast.date;
 
+  var date_html = "<h2>"+date+"</h2>";
   var icon_html = "<img src=https:"+weather_icon+">";
   var weather_info = "<p>"+conditions+"<br>Temperature (°C): <b>"+temp_c+"</b></p>";
-  return "<div id='single-forecast'>"+icon_html + weather_info+"</div>"
+  return "<div id='single-forecast'>"+date_html+icon_html + weather_info+"</div>"
 }
